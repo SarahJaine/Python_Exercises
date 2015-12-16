@@ -65,7 +65,7 @@
 
 import requests
 
-title=raw_input("Enter an IMBD ID or a movie title to search.")
+title=raw_input("Enter an IMDB ID or a movie title to search.")
 def proper(x):
     x=x.title()
     return x
@@ -76,7 +76,7 @@ if title.isdigit():#search by IMBD ID
     response=requests.get(url)
     movies=response.json()
     if movies.get("status") == "404":
-        print '\nNo movie found with IMBD ID {} on Bechdel. Try another title.'.format(proper(title))
+        print '\nNo movie found with IMDB ID {} on Bechdel. Try another title.'.format(proper(title))
     else:
         print "\n"
         for key, value in movies.items():
@@ -87,7 +87,7 @@ if title.isdigit():#search by IMBD ID
     response=requests.get(url_2)
     movies=response.json()
     if movies.get("Response") == "False":
-        print '\nNo movie found with IMBD ID {} on OMDP. Try another title.'.format(proper(title))
+        print '\nNo movie found with IMBD ID {} on OMDB. Try another title.'.format(proper(title))
     else:
         print "\n"
         for key, value in movies.items():
@@ -123,7 +123,7 @@ else: #search by title
                     response=requests.get(url_2)
                     movies=response.json()
                     if movies== []:
-                        print 'No movie found with IMBD ID "{}". Try another title.'.format(IMDB)
+                        print 'No movie found with IMDB ID "{}". Try another title.'.format(IMDB)
                     else:
                         print "\n"
                         for key, value in movies.items():
